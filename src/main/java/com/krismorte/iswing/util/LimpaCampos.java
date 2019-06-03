@@ -4,8 +4,6 @@
  */
 package com.krismorte.iswing.util;
 
-import com.github.lgooddatepicker.components.DatePicker;
-import com.github.lgooddatepicker.components.TimePicker;
 import java.awt.Component;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -265,10 +263,6 @@ public final class LimpaCampos {
                 ((JTextComponent) c).setText("");
             } else if (c instanceof JXDatePicker) {
                 ((JXDatePicker) c).setDate(null);
-            } else if (c instanceof DatePicker) {
-                ((DatePicker) c).setDate(null);
-            } else if (c instanceof TimePicker) {
-                ((TimePicker) c).setText("");
             } else if (c instanceof JComboBox) {
                 ((JComboBox) c).setSelectedItem(null);
             } else if (c instanceof JList) {
@@ -307,10 +301,6 @@ public final class LimpaCampos {
                 ((JTextComponent) c).setText("");
             } else if (c instanceof JXDatePicker) {
                 ((JXDatePicker) c).setDate(null);
-            } else if (c instanceof DatePicker) {
-                ((DatePicker) c).setDate(null);
-            } else if (c instanceof TimePicker) {
-                ((TimePicker) c).setText("");
             } else if (c instanceof JComboBox) {
                 ((JComboBox) c).setSelectedItem(null);
             } else if (c instanceof JList) {
@@ -348,11 +338,7 @@ public final class LimpaCampos {
                 ((JTextComponent) c).setText("");
             } else if (c instanceof JXDatePicker) {
                 ((JXDatePicker) c).setDate(null);
-            } else if (c instanceof DatePicker) {
-                ((DatePicker) c).setDate(null);
-            } else if (c instanceof TimePicker) {
-                ((TimePicker) c).setText("");
-            } else if (c instanceof JComboBox) {
+            }  else if (c instanceof JComboBox) {
                 ((JComboBox) c).setSelectedItem(null);
             } else if (c instanceof JList) {
                 ((JList) c).removeAll();
@@ -388,11 +374,7 @@ public final class LimpaCampos {
                 ((JTextComponent) c).setText("");
             } else if (c instanceof JXDatePicker) {
                 ((JXDatePicker) c).setDate(null);
-            } else if (c instanceof DatePicker) {
-                ((DatePicker) c).setDate(null);
-            } else if (c instanceof TimePicker) {
-                ((TimePicker) c).setText("");
-            } else if (c instanceof JComboBox) {
+            }  else if (c instanceof JComboBox) {
                 ((JComboBox) c).setSelectedItem(null);
             } else if (c instanceof JCheckBox) {
                 ((JCheckBox) c).setSelected(false);
@@ -430,11 +412,7 @@ public final class LimpaCampos {
                 ((JTextComponent) c).setText("");
             } else if (c instanceof JXDatePicker) {
                 ((JXDatePicker) c).setDate(null);
-            } else if (c instanceof DatePicker) {
-                ((DatePicker) c).setDate(null);
-            } else if (c instanceof TimePicker) {
-                ((TimePicker) c).setText("");
-            } else if (c instanceof JComboBox) {
+            }  else if (c instanceof JComboBox) {
                 ((JComboBox) c).setSelectedItem(null);
             } else if (c instanceof JList) {
                 ((JList) c).removeAll();
@@ -472,11 +450,7 @@ public final class LimpaCampos {
                 ((JTextComponent) c).setText("");
             } else if (c instanceof JXDatePicker) {
                 ((JXDatePicker) c).setDate(null);
-            } else if (c instanceof DatePicker) {
-                ((DatePicker) c).setDate(null);
-            } else if (c instanceof TimePicker) {
-                ((TimePicker) c).setText("");
-            } else if (c instanceof JComboBox) {
+            }  else if (c instanceof JComboBox) {
                 ((JComboBox) c).setSelectedItem(null);
             } else if (c instanceof JList) {
                 ((JList) c).removeAll();

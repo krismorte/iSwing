@@ -8,8 +8,10 @@
  *
  * Created on 03/06/2015, 22:57:21
  */
-package com.krismorte.iswing;
+package com.krismorte.iswing.view;
 
+import com.krismorte.iswing.IPanelUtil;
+import com.krismorte.iswing.ITelaPadrao;
 import com.krismorte.iswing.jtable.Tabela;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;

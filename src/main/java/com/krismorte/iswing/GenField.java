@@ -65,8 +65,6 @@ public @interface GenField {
     public final static int JCHECKBOX = 107;
     public final static int JCOMBOBOX = 108;
     public final static int JDATEPICKER = 109;
-    public final static int LGDATEPICKER = 110;
-    public final static int LGDATETIMEPICKER = 111;
 
     /**
      * <table>

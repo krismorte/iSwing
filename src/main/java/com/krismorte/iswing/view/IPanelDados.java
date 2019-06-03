@@ -8,10 +8,15 @@
  *
  * Created on 03/06/2015, 20:22:20
  */
-package com.krismorte.iswing;
+package com.krismorte.iswing.view;
 
-import com.github.lgooddatepicker.components.DatePicker;
-import com.github.lgooddatepicker.components.DateTimePicker;
+import com.krismorte.iswing.ComponenteTela;
+import com.krismorte.iswing.GenField;
+import com.krismorte.iswing.IPanelButtonAction;
+import com.krismorte.iswing.IPanelList;
+import com.krismorte.iswing.IPanelListener;
+import com.krismorte.iswing.IPanelUtil;
+import com.krismorte.iswing.ITelaPadrao;
 import com.krismorte.iswing.util.LimpaCampos;
 import com.krismorte.iswing.util.TelaUtil;
 import java.awt.Dimension;
@@ -159,7 +164,7 @@ public abstract class IPanelDados extends javax.swing.JPanel {
                 this.add(o, bag);
                 //componentes.add(new ComponenteTela(comp.getAnotacao(), o));
                 comp.setObjeto(o);
-            } else if (comp.getAnotacao().fieldType() == GenField.LGDATEPICKER) {
+            } /*else if (comp.getAnotacao().fieldType() == GenField.LGDATEPICKER) {
                 this.add(getJLabel(comp.getAnotacao().fieldText(), linhaComponentes), bag);
                 DatePicker o = getDatePicker(comp.getAnotacao(), linhaComponentes);
 
@@ -171,7 +176,7 @@ public abstract class IPanelDados extends javax.swing.JPanel {
 
                 this.add(o, bag);
                 comp.setObjeto(o);
-            } else if (comp.getAnotacao().fieldType() == GenField.JCOMBOBOX) {
+            }*/ else if (comp.getAnotacao().fieldType() == GenField.JCOMBOBOX) {
                 this.add(getJLabel(comp.getAnotacao().fieldText(), linhaComponentes), bag);
                 if (comp.getAnotacao().fieldButton()) {
                     JPanel p2 = new JPanel();
@@ -377,7 +382,7 @@ public abstract class IPanelDados extends javax.swing.JPanel {
         return j;
     }
 
-    private DatePicker getDatePicker(GenField anotacao, int linhaComponentes) {
+   /* private DatePicker getDatePicker(GenField anotacao, int linhaComponentes) {
         DatePicker j = new DatePicker();
         j.setFont(fontInput);
         //j.addFocusListener(ipanelLientener.getDefaultFocusListener(j.get));
@@ -402,7 +407,7 @@ public abstract class IPanelDados extends javax.swing.JPanel {
         bag.gridy = linhaComponentes;
         //bag.ipady = 8;
         return j;
-    }
+    }*/
 
     private JPasswordField getJPasswordField(GenField anotacao, int linhaComponentes) {
         JPasswordField j = new JPasswordField();

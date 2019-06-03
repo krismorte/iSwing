@@ -3,8 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.krismorte.iswing;
+package com.krismorte.iswing.view;
 
+import com.krismorte.iswing.ComponenteTela;
+import com.krismorte.iswing.IPanelListener;
+import com.krismorte.iswing.IPanelUtil;
+import com.krismorte.iswing.MenuPopup;
+import com.krismorte.iswing.iBusiness;
+import com.krismorte.iswing.iTelaConsulta;
 import com.krismorte.iswing.jtable.Tabela;
 import com.krismorte.iswing.util.EventoMouseMenuPopup;
 import com.krismorte.iswing.util.TelaUtil;

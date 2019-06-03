@@ -5,8 +5,6 @@
  */
 package com.krismorte.iswing;
 
-import com.github.lgooddatepicker.components.DatePicker;
-import com.github.lgooddatepicker.components.TimePicker;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -97,32 +95,5 @@ public class IPanelListener {
         
     }
     
-    public KeyAdapter getKeyListenerDatePicker(DatePicker txt) {
-        return new KeyAdapter() {
-            
-            @Override
-            public void keyReleased(KeyEvent e) {
-                if (e.getID() == KeyEvent.KEY_RELEASED) {
-                    if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                        txt.openPopup();
-                    }
-                }
-            }
-        };
-    }
-    
-    public KeyAdapter getKeyListenerTimePicker(TimePicker txt) {
-        return new KeyAdapter() {
-            
-            @Override
-            public void keyReleased(KeyEvent e) {
-                if (e.getID() == KeyEvent.KEY_RELEASED) {
-                    if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-                        txt.openPopup();
-                    }
-                }
-            }
-        };
-    }
     
 }

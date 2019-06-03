@@ -1,6 +1,6 @@
 package teste;
 
-import com.krismorte.iswing.TelaConsultas;
+import com.krismorte.iswing.view.TelaConsultas;
 import java.awt.Font;
 
 public class TelaConsulta {

@@ -5,8 +5,6 @@
  */
 package com.krismorte.iswing;
 
-import com.github.lgooddatepicker.components.DatePicker;
-import com.github.lgooddatepicker.components.DateTimePicker;
 import com.krismorte.iswing.util.Conversor;
 import com.krismorte.iswing.util.TelaUtil;
 import java.awt.Component;
@@ -98,13 +96,7 @@ public class GenFieldUtil {
         } else if (anotacao.fieldType() == GenField.JDATEPICKER) {
             Object vlrTmp = ((JXDatePicker) objeto).getDate();
             objReturn = trataValorObjeto(anotacao, vlrTmp);
-        } else if (anotacao.fieldType() == GenField.LGDATEPICKER) {
-            Object vlrTmp = ((DatePicker) objeto).getDate();
-            objReturn = trataValorObjeto(anotacao, vlrTmp);
-        } /*else if (anotacao.fieldType() == GenField.LGDATETIMEPICKER) {
-            Object vlrTmp = ((DateTimePicker) objeto).getDatePicker()
-            objReturn = trataValorObjeto(anotacao, vlrTmp);
-        }*/ else if (anotacao.fieldType() == GenField.JRADIONBUTTON) {
+        } else if (anotacao.fieldType() == GenField.JRADIONBUTTON) {
             Component[] cmps = ((JPanel) objeto).getComponents();
             String labelEscolhido = "";
             for (Component c : cmps) {
@@ -170,20 +162,7 @@ public class GenFieldUtil {
             }
         } else if (anotacao.fieldType() == GenField.JDATEPICKER) {
             ((JXDatePicker) objeto).setDate(Conversor.stringToDate(valor.toString()));
-        } else if (anotacao.fieldType() == GenField.LGDATEPICKER) {
-            //Conversor.
-            if (valor instanceof Date) {
-                ((DatePicker) objeto).setDate(Conversor.dateToLocalDate((Date) valor));
-            } else {
-                ((DatePicker) objeto).setDate((LocalDate) valor);
-            }
-        } /*else if (anotacao.fieldType() == GenField.LGDATETIMEPICKER) {
-            if (valor instanceof Date) {
-                ((DateTimePicker) objeto).setDateTime(Conversor.dateToLocalDateTime((Date) valor));
-            } else {
-                ((DateTimePicker) objeto).setDateTime((LocalDateTime) valor);
-            }
-        }*/ else if (anotacao.fieldType() == GenField.JRADIONBUTTON) {
+        } else if (anotacao.fieldType() == GenField.JRADIONBUTTON) {
             Component[] cmps = ((JPanel) objeto).getComponents();
             String labelEscolhido = "";
             for (Component c : cmps) {

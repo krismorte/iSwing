@@ -5,6 +5,7 @@
  */
 package com.krismorte.iswing;
 
+import com.krismorte.iswing.view.IPanelDados;
 import java.awt.event.ActionListener;
 
 /**

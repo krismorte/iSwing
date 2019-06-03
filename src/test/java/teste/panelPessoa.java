@@ -1,7 +1,7 @@
 package teste;
 
-import com.krismorte.iswing.IPanelDados;
-import com.krismorte.iswing.JDialogPadrao;
+import com.krismorte.iswing.view.IPanelDados;
+import com.krismorte.iswing.view.JDialogPadrao;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
