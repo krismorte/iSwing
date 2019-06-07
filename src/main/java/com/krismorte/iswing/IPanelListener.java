@@ -8,8 +8,6 @@ package com.krismorte.iswing;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import javax.swing.JComponent;
 import javax.swing.UIManager;
 import javax.swing.text.JTextComponent;

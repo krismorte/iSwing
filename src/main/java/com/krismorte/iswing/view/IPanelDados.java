@@ -164,19 +164,7 @@ public abstract class IPanelDados extends javax.swing.JPanel {
                 this.add(o, bag);
                 //componentes.add(new ComponenteTela(comp.getAnotacao(), o));
                 comp.setObjeto(o);
-            } /*else if (comp.getAnotacao().fieldType() == GenField.LGDATEPICKER) {
-                this.add(getJLabel(comp.getAnotacao().fieldText(), linhaComponentes), bag);
-                DatePicker o = getDatePicker(comp.getAnotacao(), linhaComponentes);
-
-                this.add(o, bag);
-                comp.setObjeto(o);
-            } else if (comp.getAnotacao().fieldType() == GenField.LGDATETIMEPICKER) {
-                this.add(getJLabel(comp.getAnotacao().fieldText(), linhaComponentes), bag);
-                DateTimePicker o = getDateTimePicker(comp.getAnotacao(), linhaComponentes);
-
-                this.add(o, bag);
-                comp.setObjeto(o);
-            }*/ else if (comp.getAnotacao().fieldType() == GenField.JCOMBOBOX) {
+            }  else if (comp.getAnotacao().fieldType() == GenField.JCOMBOBOX) {
                 this.add(getJLabel(comp.getAnotacao().fieldText(), linhaComponentes), bag);
                 if (comp.getAnotacao().fieldButton()) {
                     JPanel p2 = new JPanel();
@@ -382,32 +370,7 @@ public abstract class IPanelDados extends javax.swing.JPanel {
         return j;
     }
 
-   /* private DatePicker getDatePicker(GenField anotacao, int linhaComponentes) {
-        DatePicker j = new DatePicker();
-        j.setFont(fontInput);
-        //j.addFocusListener(ipanelLientener.getDefaultFocusListener(j.get));
-        j.getComponentDateTextField().addKeyListener(ipanelLientener.getKeyListenerDatePicker(j));
-        j.setToolTipText(anotacao.fieldTip());
-        j.setEnabled(anotacao.fieldEnable());
 
-        //bag.gridx = 1;
-        bag.gridy = linhaComponentes;
-        // bag.ipady = 8;
-        return j;
-    }
-
-    private DateTimePicker getDateTimePicker(GenField anotacao, int linhaComponentes) {
-        DateTimePicker j = new DateTimePicker();
-        j.setFont(fontInput);;
-        j.setEnabled(anotacao.fieldEnable());
-        j.getDatePicker().addKeyListener(ipanelLientener.getKeyListenerDatePicker(j.getDatePicker()));
-        j.getTimePicker().getComponentTimeTextField().addKeyListener(ipanelLientener.getKeyListenerTimePicker(j.getTimePicker()));
-        j.setToolTipText(anotacao.fieldTip());
-        //bag.gridx = 1;
-        bag.gridy = linhaComponentes;
-        //bag.ipady = 8;
-        return j;
-    }*/
 
     private JPasswordField getJPasswordField(GenField anotacao, int linhaComponentes) {
         JPasswordField j = new JPasswordField();
