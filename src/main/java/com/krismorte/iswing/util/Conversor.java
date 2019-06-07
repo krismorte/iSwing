@@ -13,7 +13,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.joda.time.DateTime;
 
 /**
  *
@@ -79,17 +78,6 @@ public class Conversor {
         return stringToDate(vlr, msc);
     }
 
-    /**
-     * Convert String to DateTime without Mask
-     *
-     * @param vlr
-     * @return
-     * @throws Exception
-     */
-    public static DateTime stringToDateTime(String vlr) throws Exception {
-        String msc = getDateMask(vlr);
-        return stringToDateTime(vlr, msc);
-    }
 
     /**
      * Convert String to LocaDate without Mask
@@ -220,76 +208,7 @@ public class Conversor {
         return fimTratado;
     }
 
-    /**
-     * Convert String to DateTime dd/MM/YYYY or dd/MM/YYYY HH:mm:ss or
-     * YYYY/MM/dd or YYYY/MM/dd HH:mm:ss dd-MM-YYYY or dd-MM-YYYY HH:mm:ss or
-     * YYYY-MM-dd or YYYY-MM-dd HH:mm:ss
-     *
-     * @param vlr
-     * @param msc
-     * @return
-     * @throws Exception
-     */
-    public static DateTime stringToDateTime(String vlr, String msc) throws Exception {
-        if (msc.equals(DATE_MASK_BRAZILIAN_BAR)) {
-            int dia = Integer.parseInt(vlr.substring(0, 2));
-            int mes = Integer.parseInt(vlr.substring(3, 5));
-            int ano = Integer.parseInt(vlr.substring(6, 10));
-            return new DateTime(ano, mes, dia, 0, 0, 0, 0);
-        } else if (msc.equals(DATETIME_MASK_BRAZILIAN_BAR)) {
-            System.out.println(vlr.substring(14, 16));
-            int dia = Integer.parseInt(vlr.substring(0, 2));
-            int mes = Integer.parseInt(vlr.substring(3, 5));
-            int ano = Integer.parseInt(vlr.substring(6, 10));
-            int hora = Integer.parseInt(vlr.substring(11, 13));
-            int minuto = Integer.parseInt(vlr.substring(14, 16));
-            int segundo = Integer.parseInt(vlr.substring(17, 19));
-            return new DateTime(ano, mes, dia, hora, minuto, segundo, 0);
-        } else if (msc.equals(DATE_MASK_AMERICAN_BAR)) {
-            int ano = Integer.parseInt(vlr.substring(0, 4));
-            int mes = Integer.parseInt(vlr.substring(5, 7));
-            int dia = Integer.parseInt(vlr.substring(8));
-            return new DateTime(ano, mes, dia, 0, 0, 0, 0);
-        } else if (msc.equals(DATETIME_MASK_AMERICAN_BAR)) {
-            int ano = Integer.parseInt(vlr.substring(0, 4));
-            int mes = Integer.parseInt(vlr.substring(5, 7));
-            int dia = Integer.parseInt(vlr.substring(8));
-            int hora = Integer.parseInt(vlr.substring(11, 13));
-            int minuto = Integer.parseInt(vlr.substring(14, 16));
-            int segundo = Integer.parseInt(vlr.substring(17, 19));
-            return new DateTime(ano, mes, dia, hora, minuto, segundo, 0);
-        } else if (msc.equals(DATE_MASK_BRAZILIAN_HYPHEN)) {
-            int dia = Integer.parseInt(vlr.substring(0, 2));
-            int mes = Integer.parseInt(vlr.substring(3, 5));
-            int ano = Integer.parseInt(vlr.substring(6, 10));
-            return new DateTime(ano, mes, dia, 0, 0, 0, 0);
-        } else if (msc.equals(DATETIME_MASK_BRAZILIAN_HYPHEN)) {
-            System.out.println(vlr.substring(14, 16));
-            int dia = Integer.parseInt(vlr.substring(0, 2));
-            int mes = Integer.parseInt(vlr.substring(3, 5));
-            int ano = Integer.parseInt(vlr.substring(6, 10));
-            int hora = Integer.parseInt(vlr.substring(11, 13));
-            int minuto = Integer.parseInt(vlr.substring(14, 16));
-            int segundo = Integer.parseInt(vlr.substring(17, 19));
-            return new DateTime(ano, mes, dia, hora, minuto, segundo, 0);
-        } else if (msc.equals(DATE_MASK_AMERICAN_HYPHEN)) {
-            int ano = Integer.parseInt(vlr.substring(0, 4));
-            int mes = Integer.parseInt(vlr.substring(5, 7));
-            int dia = Integer.parseInt(vlr.substring(8));
-            return new DateTime(ano, mes, dia, 0, 0, 0, 0);
-        } else if (msc.equals(DATETIME_MASK_AMERICAN_HYPHEN)) {
-            int ano = Integer.parseInt(vlr.substring(0, 4));
-            int mes = Integer.parseInt(vlr.substring(5, 7));
-            int dia = Integer.parseInt(vlr.substring(8));
-            int hora = Integer.parseInt(vlr.substring(11, 13));
-            int minuto = Integer.parseInt(vlr.substring(14, 16));
-            int segundo = Integer.parseInt(vlr.substring(17, 19));
-            return new DateTime(ano, mes, dia, hora, minuto, segundo, 0);
-        } else {
-            throw new Exception(Conversor.class.getCanonicalName()+"\nFormato inválido!");
-        }
-    }
-
+   
     /**
      * Convert String to LocaDate dd/MM/YYYY or YYYY/MM/dd or dd-MM-YYYY or
      * YYYY-MM-dd
@@ -384,9 +303,6 @@ public class Conversor {
         return LocalDateTime.parse(date.toString());
     }
 
-    public static DateTime dateToDateTime(Date date) {
-        return new DateTime(date);
-    }
 
     public static Date localDateToDate(LocalDate date) {
         return Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant());
@@ -396,17 +312,6 @@ public class Conversor {
         return Date.from(date.atZone(ZoneId.systemDefault()).toInstant());
     }
 
-    public static DateTime localDateToDateTime(LocalDate date) {
-        return new DateTime(date);
-    }
-
-    public static DateTime localDateTimeToDateTime(LocalDateTime date) {
-        return new DateTime(date);
-    }
-
-    public static Date dateTimeToDate(DateTime date) {
-        return new Date(date.getMillis());
-    }
 
     public static String getDateMask(String texto) {
 

@@ -5,11 +5,12 @@
  */
 package com.krismorte.iswing.util;
 
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.Date;
-import org.joda.time.DateTime;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Test;
@@ -19,9 +20,6 @@ import org.junit.jupiter.api.Test;
  * @author krismorte
  */
 public class ConversorTest {
-    
-    public ConversorTest() {
-    }
     
 
 
@@ -104,22 +102,13 @@ public class ConversorTest {
     public void testStringToDate_String() throws Exception {
         System.out.println("stringToDate");
         String vlr = "2019-01-01";
-        Date expResult = Date.from(Instant.parse("2019-01-01"));
+        
+        Date expResult = Date.from(new SimpleDateFormat("yyyy-MM-dd").parse("2019-01-01").toInstant());
         Date result = Conversor.stringToDate(vlr);
         assertEquals(expResult, result);
     }
 
-    /**
-     * Test of stringToDateTime method, of class Conversor.
-     */
-    @Test
-    public void testStringToDateTime_String() throws Exception {
-        System.out.println("stringToDateTime");
-        String vlr = "";
-        DateTime expResult = null;
-        DateTime result = Conversor.stringToDateTime(vlr);
-        assertEquals(expResult, result);
-    }
+ 
 
     /**
      * Test of stringToLocaDate method, of class Conversor.
@@ -127,12 +116,11 @@ public class ConversorTest {
     @Test
     public void testStringToLocaDate_String() throws Exception {
         System.out.println("stringToLocaDate");
-        String vlr = "";
-        LocalDate expResult = null;
+        String vlr = "2019-01-01";
+        LocalDate expResult = LocalDate.of(2019, Month.JANUARY, 1);
         LocalDate result = Conversor.stringToLocaDate(vlr);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -141,12 +129,11 @@ public class ConversorTest {
     @Test
     public void testStringToLocaDateTime_String() throws Exception {
         System.out.println("stringToLocaDateTime");
-        String vlr = "";
-        LocalDateTime expResult = null;
+        String vlr = "2019-01-01 00:00:00";
+        LocalDateTime expResult = LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0);
         LocalDateTime result = Conversor.stringToLocaDateTime(vlr);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
@@ -155,13 +142,11 @@ public class ConversorTest {
     @Test
     public void testStringToDate_String_String() throws Exception {
         System.out.println("stringToDate");
-        String vlr = "";
-        String msc = "";
-        Date expResult = null;
+        String vlr = "2019-01-01";
+        String msc = "YYYY-MM-dd";
+        Date expResult = Date.from(Instant.parse( "2019-01-01"));
         Date result = Conversor.stringToDate(vlr, msc);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -178,20 +163,6 @@ public class ConversorTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of stringToDateTime method, of class Conversor.
-     */
-    @Test
-    public void testStringToDateTime_String_String() throws Exception {
-        System.out.println("stringToDateTime");
-        String vlr = "";
-        String msc = "";
-        DateTime expResult = null;
-        DateTime result = Conversor.stringToDateTime(vlr, msc);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of stringToLocaDate method, of class Conversor.
@@ -214,13 +185,12 @@ public class ConversorTest {
     @Test
     public void testStringToLocaDateTime_String_String() throws Exception {
         System.out.println("stringToLocaDateTime");
-        String vlr = "";
-        String msc = "";
-        LocalDateTime expResult = null;
+        String vlr = "2019-01-01 00:00:00";
+        String msc = "YYYY-MM-dd hh:mm:ss";
+        LocalDateTime expResult = LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0);
         LocalDateTime result = Conversor.stringToLocaDateTime(vlr, msc);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
@@ -229,12 +199,11 @@ public class ConversorTest {
     @Test
     public void testDateToLocalDate() {
         System.out.println("dateToLocalDate");
-        Date date = null;
-        LocalDate expResult = null;
+        Date date = Date.from(Instant.parse("2019-01-01"));
+        LocalDate expResult = LocalDate.of(2019, Month.JANUARY, 1);
         LocalDate result = Conversor.dateToLocalDate(date);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
@@ -243,27 +212,15 @@ public class ConversorTest {
     @Test
     public void testDateToLocalDateTime() {
         System.out.println("dateToLocalDateTime");
-        Date date = null;
-        LocalDateTime expResult = null;
+        Date date = Date.from(Instant.parse("2019-01-01"));
+        LocalDateTime expResult = LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0);
         LocalDateTime result = Conversor.dateToLocalDateTime(date);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of dateToDateTime method, of class Conversor.
-     */
-    @Test
-    public void testDateToDateTime() {
-        System.out.println("dateToDateTime");
-        Date date = null;
-        DateTime expResult = null;
-        DateTime result = Conversor.dateToDateTime(date);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+
 
     /**
      * Test of localDateToDate method, of class Conversor.
@@ -293,47 +250,7 @@ public class ConversorTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of localDateToDateTime method, of class Conversor.
-     */
-    @Test
-    public void testLocalDateToDateTime() {
-        System.out.println("localDateToDateTime");
-        LocalDate date = null;
-        DateTime expResult = null;
-        DateTime result = Conversor.localDateToDateTime(date);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
-    /**
-     * Test of localDateTimeToDateTime method, of class Conversor.
-     */
-    @Test
-    public void testLocalDateTimeToDateTime() {
-        System.out.println("localDateTimeToDateTime");
-        LocalDateTime date = null;
-        DateTime expResult = null;
-        DateTime result = Conversor.localDateTimeToDateTime(date);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of dateTimeToDate method, of class Conversor.
-     */
-    @Test
-    public void testDateTimeToDate() {
-        System.out.println("dateTimeToDate");
-        DateTime date = null;
-        Date expResult = null;
-        Date result = Conversor.dateTimeToDate(date);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of getDateMask method, of class Conversor.
@@ -341,12 +258,11 @@ public class ConversorTest {
     @Test
     public void testGetDateMask() {
         System.out.println("getDateMask");
-        String texto = "";
-        String expResult = "";
+        String texto = "2019-01-01";
+        String expResult = "YYYY-MM-dd";
         String result = Conversor.getDateMask(texto);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**

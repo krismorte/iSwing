@@ -27,7 +27,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import org.jdesktop.swingx.JXDatePicker;
-import org.joda.time.DateTime;
 
 /**
  *
@@ -264,9 +263,9 @@ public class GenFieldUtil {
                     //valor = Conversor.localDateTimeToDate((LocalDateTime) valor);
                     valor = (LocalDateTime) valor;
 
-                } else if (valor instanceof DateTime) {
+                } else if (valor instanceof LocalDate) {
                     //System.out.println("DateTime: " + (DateTime) valor);
-                    valor = (DateTime) valor;
+                    valor = (LocalDate) valor;
                 } else if (valor instanceof String) {
                     //System.out.println("Date: " + (String) valor);
                     valor = Conversor.stringToDate((String) valor);
@@ -378,8 +377,8 @@ public class GenFieldUtil {
                     valor = dateFormat.format(Date.from(((LocalDate) valor).atStartOfDay(ZoneId.systemDefault()).toInstant()));
                 } else if (valor instanceof LocalDateTime) {
                     valor = dateFormat.format(Date.from(((LocalDateTime) valor).atZone(ZoneId.systemDefault()).toInstant()));
-                } else if (valor instanceof DateTime) {
-                    valor = dateFormat.format(((DateTime) valor).toDate());
+                } else if (valor instanceof LocalDate) {
+                    valor = dateFormat.format(((LocalDate) valor).toEpochDay());
                 } else if (valor instanceof String) {
                     valor = dateFormat.format(Conversor.stringToDate((String) valor));
                 }
