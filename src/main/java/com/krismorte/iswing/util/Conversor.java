@@ -9,8 +9,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -66,17 +64,6 @@ public class Conversor {
         return Double.parseDouble(vlr);
     }
 
-    /**
-     * Convert String to Date without Mask
-     *
-     * @param vlr
-     * @return
-     * @throws Exception
-     */
-    public static Date stringToDate(String vlr) throws Exception {
-        String msc = getDateMask(vlr);
-        return stringToDate(vlr, msc);
-    }
 
 
     /**
@@ -103,110 +90,6 @@ public class Conversor {
         return stringToLocaDateTime(vlr, msc);
     }
 
-    /**
-     * Convert String to Date dd/MM/YYYY or dd/MM/YYYY HH:mm:ss or YYYY/MM/dd or
-     * YYYY/MM/dd HH:mm:ss dd-MM-YYYY or dd-MM-YYYY HH:mm:ss or YYYY-MM-dd or
-     * YYYY-MM-dd HH:mm:ss
-     *
-     * @param vlr
-     * @param msc
-     * @return
-     * @throws Exception
-     */
-    public static Date stringToDate(String vlr, String msc) throws Exception {
-        Calendar c = Calendar.getInstance();
-        if (msc.equals(DATE_MASK_BRAZILIAN_BAR)) {
-            int dia = Integer.parseInt(vlr.substring(0, 2));
-            int mes = Integer.parseInt(vlr.substring(3, 5));
-            int ano = Integer.parseInt(vlr.substring(6, 10));
-            c.set(Calendar.YEAR, ano);
-            c.set(Calendar.MONDAY, mes - 1);
-            c.set(Calendar.DAY_OF_MONTH, dia);
-            return c.getTime();
-        } else if (msc.equals(DATETIME_MASK_BRAZILIAN_BAR)) {
-            int dia = Integer.parseInt(vlr.substring(0, 2));
-            int mes = Integer.parseInt(vlr.substring(3, 5));
-            int ano = Integer.parseInt(vlr.substring(6, 10));
-            int hora = Integer.parseInt(vlr.substring(11, 13));
-            int minuto = Integer.parseInt(vlr.substring(14, 16));
-            c.set(Calendar.YEAR, ano);
-            c.set(Calendar.MONDAY, mes - 1);
-            c.set(Calendar.DAY_OF_MONTH, dia);
-            c.set(Calendar.HOUR, hora);
-            c.set(Calendar.MINUTE, minuto);
-            return c.getTime();
-        } else if (msc.equals(DATE_MASK_AMERICAN_BAR)) {
-            int ano = Integer.parseInt(vlr.substring(0, 4));
-            int mes = Integer.parseInt(vlr.substring(5, 7));
-            int dia = Integer.parseInt(vlr.substring(8));
-            c.set(Calendar.YEAR, ano);
-            c.set(Calendar.MONDAY, mes - 1);
-            c.set(Calendar.DAY_OF_MONTH, dia);
-            return c.getTime();
-        } else if (msc.equals(DATETIME_MASK_AMERICAN_BAR)) {
-            int ano = Integer.parseInt(vlr.substring(0, 4));
-            int mes = Integer.parseInt(vlr.substring(5, 7));
-            int dia = Integer.parseInt(vlr.substring(8));
-            int hora = Integer.parseInt(vlr.substring(11, 13));
-            int minuto = Integer.parseInt(vlr.substring(14, 16));
-            c.set(Calendar.YEAR, ano);
-            c.set(Calendar.MONDAY, mes - 1);
-            c.set(Calendar.DAY_OF_MONTH, dia);
-            c.set(Calendar.HOUR, hora);
-            c.set(Calendar.MINUTE, minuto);
-            return c.getTime();
-        } else if (msc.equals(DATE_MASK_BRAZILIAN_HYPHEN)) {
-            int dia = Integer.parseInt(vlr.substring(0, 2));
-            int mes = Integer.parseInt(vlr.substring(3, 5));
-            int ano = Integer.parseInt(vlr.substring(6, 10));
-            c.set(Calendar.YEAR, ano);
-            c.set(Calendar.MONDAY, mes - 1);
-            c.set(Calendar.DAY_OF_MONTH, dia);
-            return c.getTime();
-        } else if (msc.equals(DATETIME_MASK_BRAZILIAN_HYPHEN)) {
-            int dia = Integer.parseInt(vlr.substring(0, 2));
-            int mes = Integer.parseInt(vlr.substring(3, 5));
-            int ano = Integer.parseInt(vlr.substring(6, 10));
-            int hora = Integer.parseInt(vlr.substring(11, 13));
-            int minuto = Integer.parseInt(vlr.substring(14, 16));
-            c.set(Calendar.YEAR, ano);
-            c.set(Calendar.MONDAY, mes - 1);
-            c.set(Calendar.DAY_OF_MONTH, dia);
-            c.set(Calendar.HOUR, hora);
-            c.set(Calendar.MINUTE, minuto);
-            return c.getTime();
-        } else if (msc.equals(DATE_MASK_AMERICAN_HYPHEN)) {
-            int ano = Integer.parseInt(vlr.substring(0, 4));
-            int mes = Integer.parseInt(vlr.substring(5, 7));
-            int dia = Integer.parseInt(vlr.substring(8));
-            c.set(Calendar.YEAR, ano);
-            c.set(Calendar.MONDAY, mes - 1);
-            c.set(Calendar.DAY_OF_MONTH, dia);
-            return c.getTime();
-        } else if (msc.equals(DATETIME_MASK_AMERICAN_HYPHEN)) {
-            int ano = Integer.parseInt(vlr.substring(0, 4));
-            int mes = Integer.parseInt(vlr.substring(5, 7));
-            int dia = Integer.parseInt(vlr.substring(8));
-            int hora = Integer.parseInt(vlr.substring(11, 13));
-            int minuto = Integer.parseInt(vlr.substring(14, 16));
-            c.set(Calendar.YEAR, ano);
-            c.set(Calendar.MONDAY, mes - 1);
-            c.set(Calendar.DAY_OF_MONTH, dia);
-            c.set(Calendar.HOUR, hora);
-            c.set(Calendar.MINUTE, minuto);
-            return c.getTime();
-        } else {
-            throw new Exception(Conversor.class.getCanonicalName()+"\nFormato inválido!");
-        }
-
-    }
-
-    public static Date convertDateToLocalDateTimeLastHour(Date data) {
-        LocalDate dataFim = Conversor.dateToLocalDate(data);
-        LocalDateTime dataHoraFim = dataFim.atTime(23, 59, 59);
-        Date fimTratado = Conversor.localDateTimeToDate(dataHoraFim);
-        return fimTratado;
-    }
 
    
     /**
@@ -294,23 +177,6 @@ public class Conversor {
         }
     }
 
-    public static LocalDate dateToLocalDate(Date date) {
-        SimpleDateFormat frm = new SimpleDateFormat(DATE_MASK_AMERICAN_HYPHEN);
-        return LocalDate.parse(frm.format(date));
-    }
-
-    public static LocalDateTime dateToLocalDateTime(Date date) {
-        return LocalDateTime.parse(date.toString());
-    }
-
-
-    public static Date localDateToDate(LocalDate date) {
-        return Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant());
-    }
-
-    public static Date localDateTimeToDate(LocalDateTime date) {
-        return Date.from(date.atZone(ZoneId.systemDefault()).toInstant());
-    }
 
 
     public static String getDateMask(String texto) {

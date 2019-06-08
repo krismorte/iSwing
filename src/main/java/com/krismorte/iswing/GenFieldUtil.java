@@ -159,9 +159,9 @@ public class GenFieldUtil {
             } else {
                 ((JComboBox) objeto).setSelectedItem(valor);
             }
-        } else if (anotacao.fieldType() == GenField.JDATEPICKER) {
+        } /*else if (anotacao.fieldType() == GenField.JDATEPICKER) {
             ((JXDatePicker) objeto).setDate(Conversor.stringToDate(valor.toString()));
-        } else if (anotacao.fieldType() == GenField.JRADIONBUTTON) {
+        } */else if (anotacao.fieldType() == GenField.JRADIONBUTTON) {
             Component[] cmps = ((JPanel) objeto).getComponents();
             String labelEscolhido = "";
             for (Component c : cmps) {
@@ -266,10 +266,10 @@ public class GenFieldUtil {
                 } else if (valor instanceof LocalDate) {
                     //System.out.println("DateTime: " + (DateTime) valor);
                     valor = (LocalDate) valor;
-                } else if (valor instanceof String) {
+                } /*else if (valor instanceof String) {
                     //System.out.println("Date: " + (String) valor);
                     valor = Conversor.stringToDate((String) valor);
-                }
+                }*/
 
                 verificaObjetoNulo(anotacao, valor);
                 return valor;//Conversor.stringToDate(valor.toString());
@@ -379,9 +379,9 @@ public class GenFieldUtil {
                     valor = dateFormat.format(Date.from(((LocalDateTime) valor).atZone(ZoneId.systemDefault()).toInstant()));
                 } else if (valor instanceof LocalDate) {
                     valor = dateFormat.format(((LocalDate) valor).toEpochDay());
-                } else if (valor instanceof String) {
+                }/* else if (valor instanceof String) {
                     valor = dateFormat.format(Conversor.stringToDate((String) valor));
-                }
+                }*/
                 verificaObjetoNulo(anotacao, valor);
                 return valor;//Conversor.stringToDate(valor.toString());
             } else if (anotacao.type() == GenField.DATE_ARRAY) {

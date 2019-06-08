@@ -2,6 +2,7 @@ package teste;
 
 import com.krismorte.iswing.GenField;
 import java.util.Date;
+import java.util.Random;
 
 public class Pessoa {
 
@@ -11,5 +12,12 @@ public class Pessoa {
     private String numero;
     @GenField(fieldText = "Data Aquisição", columnName = "Data Aquisição", type = GenField.DATE)
     private Date dataAquisicao;
+
+    public Pessoa() {
+        id =Math.round(Math.random());
+    }
+    
+    
+    
 
 }

@@ -9,8 +9,7 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Month;
-import java.util.Date;
+import java.time.Month;;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Test;
@@ -95,19 +94,6 @@ public class ConversorTest {
         assertEquals(expResult, result, 0.0);
     }
 
-    /**
-     * Test of stringToDate method, of class Conversor.
-     */
-    @Test
-    public void testStringToDate_String() throws Exception {
-        System.out.println("stringToDate");
-        String vlr = "2019-01-01";
-        
-        Date expResult = Date.from(new SimpleDateFormat("yyyy-MM-dd").parse("2019-01-01").toInstant());
-        Date result = Conversor.stringToDate(vlr);
-        assertEquals(expResult, result);
-    }
-
  
 
     /**
@@ -134,33 +120,6 @@ public class ConversorTest {
         LocalDateTime result = Conversor.stringToLocaDateTime(vlr);
         assertEquals(expResult, result);
 
-    }
-
-    /**
-     * Test of stringToDate method, of class Conversor.
-     */
-    @Test
-    public void testStringToDate_String_String() throws Exception {
-        System.out.println("stringToDate");
-        String vlr = "2019-01-01";
-        String msc = "YYYY-MM-dd";
-        Date expResult = Date.from(Instant.parse( "2019-01-01"));
-        Date result = Conversor.stringToDate(vlr, msc);
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of convertDateToLocalDateTimeLastHour method, of class Conversor.
-     */
-    @Test
-    public void testConvertDateToLocalDateTimeLastHour() {
-        System.out.println("convertDateToLocalDateTimeLastHour");
-        Date data = null;
-        Date expResult = null;
-        Date result = Conversor.convertDateToLocalDateTimeLastHour(data);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
 
@@ -192,65 +151,6 @@ public class ConversorTest {
         assertEquals(expResult, result);
 
     }
-
-    /**
-     * Test of dateToLocalDate method, of class Conversor.
-     */
-    @Test
-    public void testDateToLocalDate() {
-        System.out.println("dateToLocalDate");
-        Date date = Date.from(Instant.parse("2019-01-01"));
-        LocalDate expResult = LocalDate.of(2019, Month.JANUARY, 1);
-        LocalDate result = Conversor.dateToLocalDate(date);
-        assertEquals(expResult, result);
-
-    }
-
-    /**
-     * Test of dateToLocalDateTime method, of class Conversor.
-     */
-    @Test
-    public void testDateToLocalDateTime() {
-        System.out.println("dateToLocalDateTime");
-        Date date = Date.from(Instant.parse("2019-01-01"));
-        LocalDateTime expResult = LocalDateTime.of(2019, Month.JANUARY, 1, 0, 0);
-        LocalDateTime result = Conversor.dateToLocalDateTime(date);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-
-
-    /**
-     * Test of localDateToDate method, of class Conversor.
-     */
-    @Test
-    public void testLocalDateToDate() {
-        System.out.println("localDateToDate");
-        LocalDate date = null;
-        Date expResult = null;
-        Date result = Conversor.localDateToDate(date);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of localDateTimeToDate method, of class Conversor.
-     */
-    @Test
-    public void testLocalDateTimeToDate() {
-        System.out.println("localDateTimeToDate");
-        LocalDateTime date = null;
-        Date expResult = null;
-        Date result = Conversor.localDateTimeToDate(date);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-
 
     /**
      * Test of getDateMask method, of class Conversor.
