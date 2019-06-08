@@ -13,13 +13,15 @@ import javax.swing.JMenuItem;
 
 public class panelPessoa extends IPanelDados implements ActionListener {
 
+    List<Pessoa> pessoas;
+
     public panelPessoa() {
         super("teste", Pessoa.class, "", new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 12), new Font(Font.SANS_SERIF, Font.ROMAN_BASELINE, 12), false);
+        pessoas = Arrays.asList(new Pessoa(), new Pessoa());
     }
 
     @Override
     public Object[][] getRows() {
-        List<Pessoa> pessoas = Arrays.asList(new Pessoa(), new Pessoa());
         try {
             return loadLines(pessoas);
         } catch (Exception ex) {

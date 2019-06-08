@@ -14,7 +14,8 @@ public class Pessoa {
     private Date dataAquisicao;
 
     public Pessoa() {
-        id =Math.round(Math.random());
+        
+        id =Math.round(Math.random()*100);
     }
     
     

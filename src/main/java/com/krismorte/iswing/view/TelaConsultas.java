@@ -11,7 +11,8 @@ import com.krismorte.iswing.IPanelUtil;
 import com.krismorte.iswing.MenuPopup;
 import com.krismorte.iswing.iBusiness;
 import com.krismorte.iswing.iTelaConsulta;
-import com.krismorte.iswing.jtable.Tabela;
+import com.krismorte.iswing.jtable.MyTable;
+import com.krismorte.iswing.jtable.TableFactory;
 import com.krismorte.iswing.util.EventoMouseMenuPopup;
 import com.krismorte.iswing.util.TelaUtil;
 import java.awt.Font;
@@ -43,6 +44,8 @@ public class TelaConsultas extends javax.swing.JDialog implements iTelaConsulta 
     private List lista;
     private iBusiness business;
     private JTable tabela;
+    private MyTable myTable;
+
     private MenuPopup menu;
 
     public TelaConsultas() {
@@ -146,10 +149,10 @@ public class TelaConsultas extends javax.swing.JDialog implements iTelaConsulta 
             }
             linhas = ipanelUtil.loadLinesByView(listaComp, colunas, lista, "");
             linhasExport = linhas;
-            Tabela.preencheTabela(panelResultados, colunas, linhas);
-            tabela = Tabela.table;
+            myTable =TableFactory.getInstance(panelResultados, colunas, linhas);
+            tabela = myTable.getJTable();
             if (menu != null) {
-                Tabela.adicionaMouseListener(new EventoMouseMenuPopup(menu.getPopup(), tabela));
+                myTable.addMouseListener(new EventoMouseMenuPopup(menu.getPopup(), tabela));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -159,10 +162,11 @@ public class TelaConsultas extends javax.swing.JDialog implements iTelaConsulta 
     private void atualizaTabela(Object[][] linhas) {
         try {
             linhasExport = linhas;
-            Tabela.preencheTabela(panelResultados, colunas, linhas);
-            tabela = Tabela.table;
+            myTable =TableFactory.getInstance(panelResultados, colunas, linhas);
+
+
             if (menu != null) {
-                Tabela.adicionaMouseListener(new EventoMouseMenuPopup(menu.getPopup(), tabela));
+                myTable.addMouseListener(new EventoMouseMenuPopup(menu.getPopup(), tabela));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -285,13 +289,13 @@ public class TelaConsultas extends javax.swing.JDialog implements iTelaConsulta 
         } else {
             Object[][] linhasTmp = null;
             if (boxColunas.getSelectedIndex() == 0) {
-                linhasTmp = Tabela.buscaValores(colunas, linhas, txtFiltro.getText());
+                linhasTmp = myTable.search(txtFiltro.getText());
             } else {
-                linhasTmp = Tabela.buscaValores(colunas, linhas, txtFiltro.getText(), boxColunas.getSelectedIndex() - 1);
+                linhasTmp = myTable.search(txtFiltro.getText(), boxColunas.getSelectedIndex() - 1);
             }
             atualizaTabela(linhasTmp);
         }
-    }//GEN-LAST:event_btnFiltroActionPerformed
+    }
 
     /**
      * @param args the command line arguments

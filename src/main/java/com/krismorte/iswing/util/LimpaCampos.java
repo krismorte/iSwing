@@ -31,7 +31,6 @@ public final class LimpaCampos {
 
     public LimpaCampos() {
     }
-//https://github.com/LGoodDatePicker/LGoodDatePicker/releases
 
     /**
      * Clear all components in the JFrame.

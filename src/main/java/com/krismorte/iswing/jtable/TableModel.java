@@ -7,28 +7,28 @@ package com.krismorte.iswing.jtable;
 import javax.swing.table.AbstractTableModel;
 
 /**
- * TabelaModelo the extends and implements a
+ * TableModel the extends and implements a
  * AbstractTableModel 
  * @author c007329
  */
-public class TabelaModelo extends AbstractTableModel {
+public class TableModel extends AbstractTableModel {
 
     private boolean DEBUG = false;
     private String[] columnNames = null;
     private Object[][] data = null;
     private int[] colEditavies;
 
-    /** Create a new instance of  TabelaModelo
+    /** Create a new instance of  TableModel
      *
      * @param colunas a String[]
      * @param linhas a Object[][]
      */
-    public TabelaModelo(String[] colunas, Object[][] linhas) {
+    public TableModel(String[] colunas, Object[][] linhas) {
         columnNames = colunas;
         data = linhas;
     }
 
-    public TabelaModelo(String[] colunas, Object[][] linhas, int[] _colEditaveis) {
+    public TableModel(String[] colunas, Object[][] linhas, int[] _colEditaveis) {
         columnNames = colunas;
         data = linhas;
         colEditavies = _colEditaveis;

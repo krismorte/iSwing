@@ -129,13 +129,11 @@ public class ConversorTest {
     @Test
     public void testStringToLocaDate_String_String() throws Exception {
         System.out.println("stringToLocaDate");
-        String vlr = "";
-        String msc = "";
-        LocalDate expResult = null;
+        String vlr = "2019-01-01";
+        String msc = "YYYY-MM-dd";
+        LocalDate expResult = LocalDate.of(2019,Month.JANUARY, 1);
         LocalDate result = Conversor.stringToLocaDate(vlr, msc);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -171,12 +169,10 @@ public class ConversorTest {
     @Test
     public void testIsValidDate_String() throws Exception {
         System.out.println("isValidDate");
-        String texto = "";
-        boolean expResult = false;
+        String texto = "2019-01-01";
+        boolean expResult = true;
         boolean result = Conversor.isValidDate(texto);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -185,13 +181,11 @@ public class ConversorTest {
     @Test
     public void testIsValidDate_String_String() throws Exception {
         System.out.println("isValidDate");
-        String texto = "";
-        String mascara = "";
-        boolean expResult = false;
+        String texto = "2019-01-01";
+        String mascara = "YYYY-MM-dd";
+        boolean expResult = true;
         boolean result = Conversor.isValidDate(texto, mascara);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -200,12 +194,10 @@ public class ConversorTest {
     @Test
     public void testIsValidDateTime_String() throws Exception {
         System.out.println("isValidDateTime");
-        String texto = "";
-        boolean expResult = false;
+        String texto = "2019-01-01 01:10:00";
+        boolean expResult = true;
         boolean result = Conversor.isValidDateTime(texto);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -214,13 +206,11 @@ public class ConversorTest {
     @Test
     public void testIsValidDateTime_String_String() throws Exception {
         System.out.println("isValidDateTime");
-        String texto = "";
-        String mascara = "";
-        boolean expResult = false;
+        String texto = "2019-01-01 01:10:00";
+        String mascara = "YYYY-MM-dd hh:mm:ss";
+        boolean expResult = true;
         boolean result = Conversor.isValidDateTime(texto, mascara);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**

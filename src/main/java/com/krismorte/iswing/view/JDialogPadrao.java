@@ -12,7 +12,9 @@ package com.krismorte.iswing.view;
 
 import com.krismorte.iswing.IPanelUtil;
 import com.krismorte.iswing.ITelaPadrao;
-import com.krismorte.iswing.jtable.Tabela;
+import com.krismorte.iswing.jtable.MyTable;
+import com.krismorte.iswing.jtable.TableFactory;
+
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,6 +45,7 @@ public class JDialogPadrao extends javax.swing.JDialog implements ITelaPadrao {
     private JMenuItem[] itens;
     private IPanelDados iPanel;
     private JTable tabela;
+    private MyTable myTable;
     private String[] colunas;
     private Object[][] linhas;
 
@@ -167,16 +170,17 @@ public class JDialogPadrao extends javax.swing.JDialog implements ITelaPadrao {
     public void refreshTable() {
         refreshObjects();
         refreshTable(colunas, linhas);
-        /*Tabela.preencheTabela(panelResultados, txtTotal, colunas, linhas);
-         //Tabela.adicionaMouseListener(new EventoMouse());
-         tabela = Tabela.table;*/
+        myTable = TableFactory.getInstance(panelResultados, txtTotal, colunas, linhas);
+        myTable.addMouseListener(new EventoMouse());
+        tabela = myTable.getJTable();
     }
 
     private void refreshTable(String[] colunas, Object[][] linhas) {
         this.linhas = linhas;
-        Tabela.preencheTabela(panelResultados, txtTotal, colunas, linhas);
-        Tabela.adicionaMouseListener(new EventoMouse());
-        tabela = Tabela.table;
+        myTable = TableFactory.getInstance(panelResultados, txtTotal, colunas, linhas);
+        myTable.addMouseListener(new EventoMouse());
+        tabela = myTable.getJTable();
+        
         tabela.getTableHeader().setFont(iPanel.getFontLabel());
         tabela.setFont(iPanel.getFontInput());
     }
@@ -214,14 +218,6 @@ public class JDialogPadrao extends javax.swing.JDialog implements ITelaPadrao {
             return false;
         }
 
-        /*if (linhas == null || linhas.length < 0) {
-         JOptionPane.showMessageDialog(null, "Sem dados a exportar");
-         return false;
-         } else {
-         File file = filePath;//getFilePath("pdf");
-         PdfModel pdf = new PdfModel();
-         return pdf.gerarArquivo("Resultado das Demandas", file.getAbsolutePath(), colunas, linhas);
-         }*/
     }
 
     @Override
@@ -231,14 +227,7 @@ public class JDialogPadrao extends javax.swing.JDialog implements ITelaPadrao {
         } catch (Exception e) {
             return false;
         }
-        /*if (linhas == null || linhas.length < 0) {
-         JOptionPane.showMessageDialog(null, "Sem dados a exportar");
-         return false;
-         } else {
-         File file = filePath;//getFilePath("xls");
-         ExcelModel excel = new ExcelModel();
-         *  return excel.gerarArquivo("Resultado das Demandas", file.getAbsolutePath(), colunas, linhas);
-         }*/
+
     }
 
     @Override
@@ -248,14 +237,7 @@ public class JDialogPadrao extends javax.swing.JDialog implements ITelaPadrao {
         } catch (Exception e) {
             return false;
         }
-        /*if (linhas == null || linhas.length < 0) {
-         JOptionPane.showMessageDialog(null, "Sem dados a exportar");
-         return false;
-         } else {
-         File file = TelaUtil.getDirectoryPath(filename);//getFilePath("pdf");
-         PdfModel pdf = new PdfModel();
-         return pdf.gerarArquivo("Resultado das Demandas", file.getAbsolutePath(), colunas, linhas);
-         }*/
+
     }
 
     @Override
@@ -265,14 +247,7 @@ public class JDialogPadrao extends javax.swing.JDialog implements ITelaPadrao {
         } catch (Exception e) {
             return false;
         }
-        /*if (linhas == null || linhas.length < 0) {
-         JOptionPane.showMessageDialog(null, "Sem dados a exportar");
-         return false;
-         } else {
-         File file = TelaUtil.getDirectoryPath(filename);//getFilePath("xls");
-         ExcelModel excel = new ExcelModel();
-         return excel.gerarArquivo("Resultado das Demandas", file.getAbsolutePath(), colunas, linhas);
-         }*/
+
     }
 
     @Override
@@ -282,14 +257,7 @@ public class JDialogPadrao extends javax.swing.JDialog implements ITelaPadrao {
         } catch (Exception e) {
             return false;
         }
-        /* if (linhas == null || linhas.length < 0) {
-         JOptionPane.showMessageDialog(null, "Sem dados a exportar");
-         return false;
-         } else {
-         File file = TelaUtil.getDirectoryPath("NewFile.pdf");//getFilePath("pdf");
-         PdfModel pdf = new PdfModel();
-         return pdf.gerarArquivo("Resultado das Demandas", file.getAbsolutePath(), colunas, linhas);
-         }*/
+
     }
 
     @Override
@@ -299,14 +267,7 @@ public class JDialogPadrao extends javax.swing.JDialog implements ITelaPadrao {
         } catch (Exception e) {
             return false;
         }
-        /*if (linhas == null || linhas.length < 0) {
-         JOptionPane.showMessageDialog(null, "Sem dados a exportar");
-         return false;
-         } else {
-         File file = TelaUtil.getDirectoryPath("NewFile.xls");//getFilePath("xls");
-         ExcelModel excel = new ExcelModel();
-         return excel.gerarArquivo("Resultado das Demandas", file.getAbsolutePath(), colunas, linhas);
-         }*/
+
     }
 
     @Override
@@ -435,7 +396,8 @@ public class JDialogPadrao extends javax.swing.JDialog implements ITelaPadrao {
         if (txtBuscar.getText().equals("")) {
             refreshTable();
         } else {
-            Object[][] linhasTmp = Tabela.buscaValores(colunas, linhas, txtBuscar.getText());
+            //Object[][] linhasTmp = TableFactory.buscaValores(colunas, linhas, txtBuscar.getText());
+            Object[][] linhasTmp = myTable.search(txtBuscar.getText());
             refreshTable(colunas, linhasTmp);
         }
 }//GEN-LAST:event_btnBuscarActionPerformed
